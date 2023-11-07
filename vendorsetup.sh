@@ -22,10 +22,10 @@ FDEVICE="rosemary"
 #set -o xtrace
 
    # CCACHE
-   export USE_CCACHE=1
-   export CCACHE_EXEC=/usr/bin/ccache
-   export CCACHE_MAXSIZE="32G"
-   export CCACHE_DIR="/mnt/ccache"
+   # export USE_CCACHE=1
+   # export CCACHE_EXEC=/usr/bin/ccache
+   # export CCACHE_MAXSIZE="32G"
+   # export CCACHE_DIR="/mnt/ccache"
 
 fox_get_target_device() {
     local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)

@@ -88,7 +88,6 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 
         # Miui & Custom Rom
         export OF_NO_MIUI_PATCH_WARNING=1
-        export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
         export OF_DEFAULT_KEYMASTER_VERSION=4.1
  
         # Other OrangeFox configs
@@ -98,8 +97,8 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
         export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800" # Tue Jan 1 2019 00:00:00 GMT
         export FOX_USE_SPECIFIC_MAGISK_ZIP="$(gettop)/device/redmi/rosemary/Magisk/Magisk.zip"
 
-        export BUNDLED_MAGISK_VER="26.1"
-        export BUNDLED_MAGISK_SUM="ae1a02b1ab608a51d5bc9b323e0588d06d30d9987ac8da01f4710d76f705dccb" # Sha256 sum of the prebuilt magisk
+        export BUNDLED_MAGISK_VER="26.4"
+        export BUNDLED_MAGISK_SUM="543a96fe26c012d99baf3a3aa5a97b80508d67cc641af7c12ce9f7b226b2b889" # Sha256 sum of the prebuilt magisk
 
         if [ -f "${FOX_USE_SPECIFIC_MAGISK_ZIP}" -a "$(sha256sum "${FOX_USE_SPECIFIC_MAGISK_ZIP}" 2>/dev/null | awk '{print $1}')" != "${BUNDLED_MAGISK_SUM}" ]
         then

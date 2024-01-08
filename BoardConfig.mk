@@ -141,6 +141,7 @@ TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1024
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SKIP_ADDITIONAL_FSTAB := true
 
 ifneq ($(OF_HIDE_NOTCH),1)
     # Configure Status bar icons for regular TWRP builds only

@@ -17,7 +17,7 @@
 
 ## Firmware
 /dtbo               emmc      /dev/block/platform/bootdevice/by-name/dtbo	                        flags=slotselect;
-/logo	            emmc      /dev/block/platform/bootdevice/by-name/logo	                        flags=display="Logo";backup=1;
+/logo	           emmc      /dev/block/platform/bootdevice/by-name/logo	                        flags=display="Logo";backup=1;
 /expdb              emmc      /dev/block/platform/bootdevice/by-name/expdb
 /seccfg             emmc      /dev/block/platform/bootdevice/by-name/seccfg
 /tee                emmc      /dev/block/platform/bootdevice/by-name/tee                            flags=slotselect;
@@ -26,7 +26,7 @@
 
 ## Removable storage
 /sdcard1            vfat      /dev/block/mmcblk0p1         /dev/block/mmcblk0                       flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable
-/usb_otg            vfat      /dev/block/sdd1              /dev/block/sdd                           flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable;
+/usb_otg            auto      /dev/block/sdd1              /dev/block/sdd                           flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable;
 
 ## Internal storage (for OrangeFox)
 /storage            f2fs      /data/media/0                                                         flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable;

@@ -84,10 +84,16 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 		export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
 		export OF_SKIP_FBE_DECRYPTION_SDKVERSION=35
-		export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
+        export OF_UNBIND_SDCARD_F2FS=1
+        export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
+        export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+        export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
+
+
+		#export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
 
 		# Remove the loop block errors after flashing ZIPs (Workaround)
-		export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
+		# export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
 		
 		# Display / Leds
 		export OF_SCREEN_H="2400"

@@ -91,9 +91,9 @@ jobs:
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Set Swap Space
-      uses: pierotofy/set-swap-space@master
+      uses: actionhippie/swap-space@v1
       with:
-        swap-size-gb: 12
+        size-gb: 12
 
     - name: Set up ccache
       uses: hendrikmuhs/ccache-action@v1.2     

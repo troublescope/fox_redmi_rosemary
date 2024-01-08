@@ -19,6 +19,21 @@
 # 	Please maintain this if you use this script or any part of it
 #
 
+ # CCACHE
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+export CCACHE_MAXSIZE="32G"
+export CCACHE_DIR="/mnt/ccache"
+
+ # Warn if CCACHE_DIR is an invalid directory
+if [ ! -d ${CCACHE_DIR} ];
+  then
+    echo "CCACHE Directory/Partition is not mounted at \"${CCACHE_DIR}\""
+    echo "Please edit the CCACHE_DIR build variable or mount the directory."
+fi
+
+ export LC_ALL="C"
+ 
 FDEVICE="rosemary"
 #set -o xtrace
 
@@ -41,14 +56,25 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 	echo -e "\x1b[96m[INFO]: Setting up OrangeFox build vars for rosemary...\x1b[m"
 	if [ "$1" = "$FDEVICE" ] || [  "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 		# Version / Maintainer infos
-		#export OF_MAINTAINER="Woomymy"
-		#export FOX_VERSION=R11.1_1
+		export OF_MAINTAINER="Troublescope"
+		export FOX_VARIANT="A13+"
 		#export FOX_BUILD_TYPE="Beta"
 
 		# Device info
 		export FOX_AB_DEVICE=1
 		export FOX_VIRTUAL_AB_DEVICE=1
 		export TARGET_DEVICE_ALT="secret, maltose"
+		
+		# lib Tools
+		export FOX_USE_BASH_SHELL=1
+		export FOX_USE_NANO_EDITOR=1
+		export FOX_USE_TAR_BINARY=1
+		export FOX_USE_SED_BINARY=1
+		export FOX_USE_XZ_UTILS=1
+		export FOX_ASH_IS_BASH=1
+		
+		# Store settings at /data/recovery instead of internal storage
+		export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
 		
 		# OTA / DM-Verity / Encryption
 		export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
@@ -60,6 +86,9 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
 		export OF_SKIP_FBE_DECRYPTION_SDKVERSION=35
 		export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
 
+		# Remove the loop block errors after flashing ZIPs (Workaround)
+		export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
+		
 		# Display / Leds
 		export OF_SCREEN_H="2400"
 		export OF_STATUS_H="100"
@@ -76,6 +105,7 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]; then
         export OF_QUICK_BACKUP_LIST="/boot;/data;"
 		export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800" # Tue Jan 1 2019 00:00:00 GMT
 		export FOX_DELETE_AROMAFM=1
+        export OF_DEFAULT_KEYMASTER_VERSION=4.1
 		export FOX_USE_SPECIFIC_MAGISK_ZIP="$(gettop)/device/redmi/rosemary/Magisk/Magisk.zip"
 
         export BUNDLED_MAGISK_VER="26.1"

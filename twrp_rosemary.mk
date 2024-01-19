@@ -29,6 +29,9 @@ $(call inherit-product, device/redmi/rosemary/device.mk)
 # Inherit some common TWRP stuff
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+# Inherit any OrangeFox-specific settings
+$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_rosemary.mk)
+
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := rosemary
 PRODUCT_NAME := twrp_rosemary

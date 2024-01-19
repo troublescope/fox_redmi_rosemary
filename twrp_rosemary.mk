@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+DEVICE_PATH :=  device/redmi/rosemary
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
@@ -30,7 +32,7 @@ $(call inherit-product, device/redmi/rosemary/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit any OrangeFox-specific settings
-$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_rosemary.mk)
+$(call inherit-product, $(DEVICE_PATH)/fox_rosemary.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := rosemary

@@ -93,7 +93,7 @@ jobs:
     - name: Set Swap Space
       uses: actionhippie/swap-space@v1
       with:
-        size: 12
+        size: 12G
 
     - name: Set up ccache
       uses: hendrikmuhs/ccache-action@v1.2     

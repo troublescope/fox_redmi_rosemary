@@ -21,6 +21,7 @@
 
 # Version / Maintainer infos
 OF_MAINTAINER := Troublescope
+FOX_VERSION := R12.1-Stable
 FOX_VARIANT := A13+
 FOX_BUILD_TYPE := Stable
     
